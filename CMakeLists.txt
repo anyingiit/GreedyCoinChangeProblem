@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.31)
 project(GreedyCoinChangeProblem)
 
-set(CMAKE_CXX_STANDARD 20)
 
-add_executable(GreedyCoinChangeProblem main.cpp)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+add_executable(GreedyCoinChangeProblem main.cpp
+        GreedyCoinChangeProblem.cpp
+        GreedyCoinChangeProblem.h)
