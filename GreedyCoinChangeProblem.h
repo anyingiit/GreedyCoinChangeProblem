@@ -17,12 +17,12 @@ public:
     };
 
     using Stock = std::map<unsigned, unsigned>;   // 库存：面额 -> 张数
-    using Used  = std::map<unsigned, unsigned>;   // 实际使用：面额 -> 张数
+    using Used = std::map<unsigned, unsigned>;   // 实际使用：面额 -> 张数
     using Result = std::expected<Used, std::string>;
 
     GreedyCoinChangeProblem();
 
-    Result Excute(const Stock& stock, int T);
+    Result Excute(const Stock &stock, int T);
 };
 
 

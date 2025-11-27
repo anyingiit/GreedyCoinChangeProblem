@@ -14,11 +14,11 @@ GreedyCoinChangeProblem::GreedyCoinChangeProblem() {
 
 GreedyCoinChangeProblem::Result
 GreedyCoinChangeProblem::Excute(const GreedyCoinChangeProblem::Stock &stock, int T) {
-    if (stock.size() != kStandardDenominations.size()){
+    if (stock.size() != kStandardDenominations.size()) {
         return std::unexpected("stock size illgle");
     }
-    for (unsigned D : kStandardDenominations) {
-        if (!stock.contains(D)){
+    for (unsigned D: kStandardDenominations) {
+        if (!stock.contains(D)) {
             return std::unexpected("stock not has required key-value");
         }
     }
@@ -32,7 +32,7 @@ GreedyCoinChangeProblem::Excute(const GreedyCoinChangeProblem::Stock &stock, int
         R -= g * D;
     }
 
-    if (R != 0){
+    if (R != 0) {
         return std::unexpected("not has enothod stock to handle T");
     }
 
