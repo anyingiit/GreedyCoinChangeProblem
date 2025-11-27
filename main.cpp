@@ -1,25 +1,36 @@
+#include "GreedyCoinChangeProblem.h"
 #include <iostream>
-using namespace std;
+#include <numeric>
 
-
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+    GreedyCoinChangeProblem solver;
+    GreedyCoinChangeProblem::Stock stock = {
+            {10000, 1}, {5000, 1}, {1000, 1}, {500, 1},
+            {100, 2},   {50, 2},   {10, 5},   {5, 3}, {1, 10}
+    };
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
+    constexpr int target = 186;
+    auto result = solver.Excute(stock, target);
+    if (!result) {
+        std::cerr << "Failed to make change: " << result.error() << '\n';
+        return 1;
     }
 
-    vector<int> stock = vector<int>(5);
+    const auto &used = *result;
+    unsigned total = 0;
+    unsigned coins = 0;
+    for (auto [denom, count] : used) {
+        total += denom * count;
+        coins += count;
+    }
 
-    int used;
-    int amount;
-
-    int T = amount;
+    std::cout << "Target " << target << " reached using " << coins << " coins.\n";
+    std::cout << "Breakdown:\n";
+    for (auto [denom, count] : used) {
+        if (count == 0) continue;
+        std::cout << "  " << denom << " x " << count << '\n';
+    }
+    std::cout << "Total validated: " << total << '\n';
 
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }

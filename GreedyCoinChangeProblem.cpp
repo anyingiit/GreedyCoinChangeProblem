@@ -6,10 +6,7 @@
 #include <array>
 #include <algorithm>
 
-
-static constexpr std::array<unsigned, 9> kStandardDenoms = {
-        10000, 5000, 1000, 500, 100, 50, 10, 5, 1
-};
+constexpr std::array<unsigned, 9> GreedyCoinChangeProblem::kStandardDenominations;
 
 GreedyCoinChangeProblem::GreedyCoinChangeProblem() {
 
@@ -17,10 +14,10 @@ GreedyCoinChangeProblem::GreedyCoinChangeProblem() {
 
 GreedyCoinChangeProblem::Result
 GreedyCoinChangeProblem::Excute(const GreedyCoinChangeProblem::Stock &stock, int T) {
-    if (stock.size() != kStandardDenoms.size()){
+    if (stock.size() != kStandardDenominations.size()){
         return std::unexpected("stock size illgle");
     }
-    for (unsigned D : kStandardDenoms) {
+    for (unsigned D : kStandardDenominations) {
         if (!stock.contains(D)){
             return std::unexpected("stock not has required key-value");
         }
@@ -28,7 +25,7 @@ GreedyCoinChangeProblem::Excute(const GreedyCoinChangeProblem::Stock &stock, int
 
     Used used;
     unsigned R = T;
-    for (unsigned D: kStandardDenoms) {
+    for (unsigned D: kStandardDenominations) {
         unsigned q = R / D;
         unsigned g = std::min(q, stock.at(D));
         used.try_emplace(D, g);
@@ -41,7 +38,6 @@ GreedyCoinChangeProblem::Excute(const GreedyCoinChangeProblem::Stock &stock, int
 
     return used;
 }
-
 
 
 
