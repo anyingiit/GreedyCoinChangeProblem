@@ -21,3 +21,13 @@ add_executable(GreedyCoinChangeValidation
         GreedyCoinChangeValidation.cpp
         GreedyCoinChangeProblem.cpp
         GreedyCoinChangeProblem.h)
+
+add_executable(GreedyCoinChangeImprovedVersionTests
+        GreedyCoinChangeProblemImprovedVersionTests.cpp
+        GreedyCoinChangeProblemImprovedVersion.cpp
+        GreedyCoinChangeProblemImprovedVersion.h)
+
+add_executable(GreedyCoinChangeImprovedValidation
+        GreedyCoinChangeProblemImprovedValidation.cpp
+        GreedyCoinChangeProblemImprovedVersion.cpp
+        GreedyCoinChangeProblemImprovedVersion.h)

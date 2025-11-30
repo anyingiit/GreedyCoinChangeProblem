@@ -24,21 +24,30 @@
 
 ## Tests / 测试
 
-- Unit tests: `./build/GreedyCoinChangeTests` (deterministic coverage of success/error cases). / 单元测试：运行
-  `./build/GreedyCoinChangeTests`，覆盖成功与错误路径的确定性用例。
-- Statistical validation: `./build/GreedyCoinChangeValidation [trials=5000] [maxCount=8] [maxTarget=20000]` compares
-  greedy results against bounded-optimal DP on random stocks/targets. / 统计验证：
-  `./build/GreedyCoinChangeValidation [trials=5000] [maxCount=8] [maxTarget=20000]`，在随机库存与目标上将贪心结果与有界最优
-  DP 对比。
+- Unit tests:
+    - `./build/GreedyCoinChangeTests`: deterministic coverage of success/error cases for the base solver. / 基础求解器的确定性用例。
+    - `./build/GreedyCoinChangeImprovedVersionTests`: depth-constrained denomination chain coverage (divisibility, depth
+      bounds, negative targets, insufficient stock). / 含最大向下委托深度的整除链测试，覆盖整除性、深度越界、负目标与库存不足。
+- Statistical validation:
+    - `./build/GreedyCoinChangeValidation [trials=5000] [maxCount=8] [maxTarget=20000]` compares greedy results against
+      bounded-optimal DP on random stocks/targets. / 在随机库存与目标上将贪心结果与有界最优 DP 对比。
+    - `./build/GreedyCoinChangeImprovedValidation [trials=2000] [maxStock=4] [maxChainLen=5] [maxTarget=50000]`
+      exhaustively checks depth-constrained greedy against all feasible allocations of random divisible chains, and
+      asserts coin-count optimality. / 对随机整除链穷举验证深度约束贪心的可行性与最优币数。
 - Exit code 0 means all checks passed; non-zero indicates mismatches or detected inconsistencies. / 返回码 0
   表示全部通过；非零表示存在不一致或缺陷。
 
 ## Files / 文件
 
 - `GreedyCoinChangeProblem.h/.cpp`: Core solver with exposed standard denominations. / 核心求解器，公开标准面额数组。
+- `GreedyCoinChangeProblemImprovedVersion.h/.cpp`: Solver variant with max-fallback-depth constraints per denomination. /
+  含最大向下委托深度约束的求解器版本。
 - `main.cpp`: Example invocation printing a breakdown. / 示例调用并打印找零分解。
-- `GreedyCoinChangeProblemTests.cpp`: Deterministic unit tests. / 确定性单元测试。
+- `GreedyCoinChangeProblemTests.cpp`: Deterministic unit tests for the base solver. / 基础求解器单元测试。
+- `GreedyCoinChangeProblemImprovedVersionTests.cpp`: Deterministic unit tests for the depth-constrained solver. /
+  深度约束求解器单元测试。
 - `GreedyCoinChangeValidation.cpp`: Monte Carlo validator against optimal DP. / 基于最优 DP 的蒙特卡洛验证器。
+- `GreedyCoinChangeProblemImprovedValidation.cpp`: Exhaustive validator for the depth-constrained solver. / 深度约束求解器的穷举验证器。
 - `CMakeLists.txt`: Targets for sample app, tests, and validation. / 定义示例、测试与验证可执行文件的构建规则。
 
 ## Usage notes / 使用说明
