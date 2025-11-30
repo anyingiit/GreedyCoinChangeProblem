@@ -8,7 +8,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(GreedyCoinChangeProblem main.cpp
         GreedyCoinChangeProblem.cpp
-        GreedyCoinChangeProblem.h)
+        GreedyCoinChangeProblem.h
+        GreedyCoinChangeProblemImprovedVersion.cpp
+        GreedyCoinChangeProblemImprovedVersion.h)
 
 add_executable(GreedyCoinChangeTests
         GreedyCoinChangeProblemTests.cpp
