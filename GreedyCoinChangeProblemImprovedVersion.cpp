@@ -15,7 +15,7 @@ GreedyCoinChangeProblemImprovedVersion::GreedyCoinChangeProblemImprovedVersion()
 
 GreedyCoinChangeProblemImprovedVersion::Result
 GreedyCoinChangeProblemImprovedVersion::Excute(const DenominationTable &denominationTable, int T) {
-    if (T < 0){
+    if (T < 0) {
         return std::unexpected("error T illegal, must >= 0");
     }
     // 将denominationTable纸张进行生序排序，并且排序后的面额从前到后每两个元素必须满足整除， 以达成整除链
@@ -40,7 +40,7 @@ GreedyCoinChangeProblemImprovedVersion::Excute(const DenominationTable &denomina
     // 4. 检查maxFallbackDepth是否合法
     for (int i = 0; i < keys.size(); i++) {
         unsigned D = keys[i];
-        if (i + denominationTable.at(D).maxFallbackDepth > denominationTable.size() - 1){
+        if (i + denominationTable.at(D).maxFallbackDepth > denominationTable.size() - 1) {
             return std::unexpected("error maxFallbackDepth illegal");
         }
     }

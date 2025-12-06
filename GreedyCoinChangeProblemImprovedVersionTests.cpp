@@ -29,9 +29,9 @@ namespace {
     void expectSuccessWithinDepth() {
         GreedyCoinChangeProblemImprovedVersion solver;
         DenominationTable table = {
-                {100,  {5,  0}},
-                {500,  {3,  1}},
-                {1000, {1,  1}},
+                {100,  {5, 0}},
+                {500,  {3, 1}},
+                {1000, {1, 1}},
         };
 
         const int target = 2600;
@@ -79,9 +79,9 @@ namespace {
     void expectFailureForInvalidFallbackDepth() {
         GreedyCoinChangeProblemImprovedVersion solver;
         DenominationTable table = {
-                {100,  {5,  0}},
-                {500,  {2,  1}},
-                {1000, {1,  3}}, // Depth points beyond the end of the chain.
+                {100,  {5, 0}},
+                {500,  {2, 1}},
+                {1000, {1, 3}}, // Depth points beyond the end of the chain.
         };
 
         Result result = solver.Excute(table, 1000);
@@ -125,12 +125,12 @@ int main() {
     };
 
     std::vector<TestCase> tests = {
-            {"expectSuccessWithinDepth",          expectSuccessWithinDepth},
-            {"expectFailureWhenDepthExceeded",    expectFailureWhenDepthExceeded},
-            {"expectFailureForNonDivisibleChain", expectFailureForNonDivisibleChain},
+            {"expectSuccessWithinDepth",             expectSuccessWithinDepth},
+            {"expectFailureWhenDepthExceeded",       expectFailureWhenDepthExceeded},
+            {"expectFailureForNonDivisibleChain",    expectFailureForNonDivisibleChain},
             {"expectFailureForInvalidFallbackDepth", expectFailureForInvalidFallbackDepth},
-            {"expectFailureForNegativeTarget",    expectFailureForNegativeTarget},
-            {"expectFailureWhenStockInsufficient", expectFailureWhenStockInsufficient},
+            {"expectFailureForNegativeTarget",       expectFailureForNegativeTarget},
+            {"expectFailureWhenStockInsufficient",   expectFailureWhenStockInsufficient},
     };
 
     unsigned failures = 0;

@@ -3,13 +3,15 @@
 ## Unit tests / 单元测试
 
 - Runner: `GreedyCoinChangeTests` (deterministic, no randomness). / 运行器：`GreedyCoinChangeTests`，确定性且无随机因素。
-    - `expectSuccessWithBreakdown`: Feasible stock returns the expected greedy breakdown and exact sum to target (186). /
+    - `expectSuccessWithBreakdown`: Feasible stock returns the expected greedy breakdown and exact sum to target (
+      186). /
       可行库存得到预期分解且总额等于 186。
     - `expectFailureWhenSizeWrong`: Missing denomination triggers size check error. / 缺少面额触发库存大小校验错误。
     - `expectFailureWhenKeyMissing`: Wrong/missing required key reports the key-missing error. / 缺失必需面额触发“缺少键值”错误。
     - `expectFailureWhenStockTooSmall`: Insufficient stock triggers the “not enough stock” error. / 库存不足导致“库存不足”错误。
     - `expectZeroTargetHandled`: Target 0 succeeds with zero usage. / 目标为 0 时应成功且不使用任何币。
-- Runner: `GreedyCoinChangeImprovedVersionTests` (depth-constrained chain). / 运行器：`GreedyCoinChangeImprovedVersionTests`
+- Runner: `GreedyCoinChangeImprovedVersionTests` (depth-constrained chain). / 运行器：
+  `GreedyCoinChangeImprovedVersionTests`
   （含最大向下委托深度）。
     - `expectSuccessWithinDepth`: Depth allowance respected and exact breakdown returned. / 深度允许时成功找零并给出明细。
     - `expectFailureWhenDepthExceeded`: Exact sum needs超出允许深度的委托时触发错误消息。 / 依赖更深层面额时返回错误。
@@ -53,7 +55,8 @@
   `./build/GreedyCoinChangeTests` 以及 `./build/GreedyCoinChangeImprovedVersionTests`。
 - Run statistical validation (example 10k trials): `./build/GreedyCoinChangeValidation 10000 8 20000`. Improved version
   example: `./build/GreedyCoinChangeImprovedValidation 3000 4 5 50000`. / 运行统计验证（示例 1 万次）：
-  `./build/GreedyCoinChangeValidation 10000 8 20000`；改进版示例 `./build/GreedyCoinChangeImprovedValidation 3000 4 5 50000`。
+  `./build/GreedyCoinChangeValidation 10000 8 20000`；改进版示例
+  `./build/GreedyCoinChangeImprovedValidation 3000 4 5 50000`。
 
 ## Interpretation / 结果解读
 

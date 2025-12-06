@@ -40,14 +40,16 @@
 ## Files / 文件
 
 - `GreedyCoinChangeProblem.h/.cpp`: Core solver with exposed standard denominations. / 核心求解器，公开标准面额数组。
-- `GreedyCoinChangeProblemImprovedVersion.h/.cpp`: Solver variant with max-fallback-depth constraints per denomination. /
+- `GreedyCoinChangeProblemImprovedVersion.h/.cpp`: Solver variant with max-fallback-depth constraints per
+  denomination. /
   含最大向下委托深度约束的求解器版本。
 - `main.cpp`: Example invocation printing a breakdown. / 示例调用并打印找零分解。
 - `GreedyCoinChangeProblemTests.cpp`: Deterministic unit tests for the base solver. / 基础求解器单元测试。
 - `GreedyCoinChangeProblemImprovedVersionTests.cpp`: Deterministic unit tests for the depth-constrained solver. /
   深度约束求解器单元测试。
 - `GreedyCoinChangeValidation.cpp`: Monte Carlo validator against optimal DP. / 基于最优 DP 的蒙特卡洛验证器。
-- `GreedyCoinChangeProblemImprovedValidation.cpp`: Exhaustive validator for the depth-constrained solver. / 深度约束求解器的穷举验证器。
+- `GreedyCoinChangeProblemImprovedValidation.cpp`: Exhaustive validator for the depth-constrained solver. /
+  深度约束求解器的穷举验证器。
 - `CMakeLists.txt`: Targets for sample app, tests, and validation. / 定义示例、测试与验证可执行文件的构建规则。
 
 ## Usage notes / 使用说明
